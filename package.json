@@ -1,0 +1,26 @@
+{
+  "name": "phonebook",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js",
+    "dev": "nodemon --legacy-watch index.js",
+    "test": "\"echo \"Error: no test specified\\\" && exit 1\""
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/aefremov88/FullStackOpen-Exercises.git"
+  },
+  "author": "Anton Efremov",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/aefremov88/FullStackOpen-Exercises/issues"
+  },
+  "homepage": "https://github.com/aefremov88/FullStackOpen-Exercises#readme",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "express": "^5.1.0",
+    "morgan": "^1.10.1"
+  }
+}

@@ -2,7 +2,7 @@ GET http://localhost:3001/api/persons/2
 ###
 GET http://localhost:3001/api/persons/3
 ###
-DELETE http://localhost:3001/api/persons/2
+DELETE http://localhost:3001/api/persons/68a629270f383cbb38a8f985
 ###
 GET http://localhost:3001/api/persons
 
@@ -11,6 +11,15 @@ POST http://localhost:3001/api/persons HTTP/1.1
 content-type: application/json
 
  {
-    "name": "Ada Lovelace",
-    "number": "39-44-5323523"
+    "name": "A",
+    "number": "1111111"
   }
+
+###
+PUT http://localhost:3001/api/persons/68a5dd1adbecfef556d29fbb HTTP/1.1
+content-type: application/json
+
+{
+  "name": "Abraham Lincoln",
+  "number": "777-777-778"
+}

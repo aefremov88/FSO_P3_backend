@@ -10,8 +10,8 @@ app.use(express.static('dist'))
 app.use(express.json())
 
 app.use(morgan(function (tokens, req, res) {
-    const body = req.body
-    const entry = body ? JSON.stringify(body) : null
+  const body = req.body
+  const entry = body ? JSON.stringify(body) : null
   return [
     tokens.method(req, res),
     tokens.url(req, res),
@@ -47,18 +47,18 @@ app.get('/api/persons/:id', (request, response, next) => {
 
 app.get('/info', async (request, response) => {
   Person.find({})
-  .then(result => 
-    response.send(
-      `<p>Phonebook has info for ${result.length} people</p>
-      <p>${Date(Date.now())}</p>`
+    .then(result =>
+      response.send(
+        `<p>Phonebook has info for ${result.length} people</p>
+        <p>${Date(Date.now())}</p>`
+      )
     )
-  )
 })
 
 // ===PUT=========================================================
 
 app.put('/api/persons/:id', (request, response, next) => {
-  const { name, number } = request.body
+  const { number } = request.body
 
   Person.findById(request.params.id)
     .then(person => {
@@ -79,7 +79,7 @@ app.put('/api/persons/:id', (request, response, next) => {
 
 app.delete('/api/persons/:id', (request, response, next) => {
   Person.findByIdAndDelete(request.params.id)
-    .then(result => {
+    .then(() => {
       response.status(204).end()
     })
     .catch(error => next(error))
@@ -91,17 +91,17 @@ app.post('/api/persons', async (request, response, next) => {
   const body = request.body
 
   if (!body.name) {
-    response.status(400).json({ 
-    error: 'name is missing'});
-    return;
+    response.status(400).json({
+      error: 'name is missing' })
+    return
   }
 
   if (!body.number) {
-    response.status(400).json({ 
-    error: 'number is missing'});
-    return;
+    response.status(400).json({
+      error: 'number is missing' })
+    return
   }
-  
+
   const person = new Person({
     name: body.name,
     number: body.number,
@@ -128,7 +128,7 @@ const errorHandler = (error, request, response, next) => {
 
   if (error.name === 'CastError') {
     return response.status(400).json({ error: 'malformatted id' })
-  } 
+  }
 
   if (error.name === 'ValidationError') {
     return response.status(400).json({ error: error.message })
